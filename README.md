@@ -2,7 +2,7 @@
 
 Hey, welcome to the course. I hope this course provides a great learning experience.
 
-_This course is also available on my [website](https://karanpratapsingh.com/courses/system-design) and as an ebook on [leanpub](https://leanpub.com/systemdesign). Please leave a ⭐ as motivation if this was helpful!_
+_This course is also available on my [website](https://karanpratapsingh.com/courses/system-design) and as an ebook on [leanpub](https://leanpub.com/systemdesign). Please leave a ⭐ as motivation (动机｜动力) if this was helpful!_
 
 # Table of contents
 
@@ -87,26 +87,26 @@ _This course is also available on my [website](https://karanpratapsingh.com/cour
 
 # What is system design?
 
-Before we start this course, let's talk about what even is system design.
+Before we start this course, let's talk about what even (什么) is system design.
 
 System design is the process of defining the architecture, interfaces, and data
-for a system that satisfies specific requirements. System design meets the needs
-of your business or organization through coherent and efficient systems. It requires
+for a system that satisfies (满意｜符合) specific (具体的) requirements. System design meets the needs
+of your business or organization through coherent (连贯的｜合乎逻辑的) and efficient (有效率的) systems. It requires
 a systematic approach to building and engineering systems. A good system design requires
 us to think about everything, from infrastructure all the way down to the data and how it's stored.
 
 ## Why is System Design so important?
 
-System design helps us define a solution that meets the business requirements. It is
-one of the earliest decisions we can make when building a system. Often it is essential
-to think from a high level as these decisions are very difficult to correct later. It
-also makes it easier to reason about and manage architectural changes as the system evolves.
+System design helps us define a solution that meets (满足) the business requirements. It is
+one of the earliest (最早) decisions we can make when building a system. Often it is essential
+to think from a high level as these decisions are very difficult to correct (正确的) later. It
+also makes it easier to reason about and manage architectural changes as the system evolves（演化｜进化）.
 
 # IP
 
-An IP address is a unique address that identifies a device on the internet or a local network. IP stands for _"Internet Protocol"_, which is the set of rules governing the format of data sent via the internet or local network.
+An IP address is a unique address that identifies a device on the internet or a local network. IP stands for _"Internet Protocol"_, which is the set of rules governing (统治) the format of data sent via the internet or local network.
 
-In essence, IP addresses are the identifier that allows information to be sent between devices on a network. They contain location information and make devices accessible for communication. The internet needs a way to differentiate between different computers, routers, and websites. IP addresses provide a way of doing so and form an essential part of how the internet works.
+In essence (本质), IP addresses are the identifier that allows information to be sent between devices on a network. They contain location information and make devices accessible for communication. The internet needs a way to differentiate (区分) between different computers, routers, and websites. IP addresses provide a way of doing so and form an essential part of how the internet works.
 
 ## Versions
 
@@ -114,15 +114,15 @@ Now, let's learn about the different versions of IP addresses:
 
 ### IPv4
 
-The original Internet Protocol is IPv4 which uses a 32-bit numeric dot-decimal notation that only allows for around 4 billion IP addresses. Initially, it was more than enough but as internet adoption grew, we needed something better.
+The original Internet Protocol is IPv4 which uses a 32-bit numeric dot-decimal notation (符号) that only allows for around 4 billion IP addresses. Initially, it was more than enough but as internet adoption grew, we needed something better.
 
 _Example: `102.22.192.181`_
 
 ### IPv6
 
-IPv6 is a new protocol that was introduced in 1998. Deployment commenced in the mid-2000s and since the internet users have grown exponentially, it is still ongoing.
+IPv6 is a new protocol that was introduced in 1998. Deployment commenced (开始) in the mid-2000s and since the internet users have grown exponentially (以指数方式), it is still ongoing.
 
-This new protocol uses 128-bit alphanumeric hexadecimal notation. This means that IPv6 can provide about ~340e+36 IP addresses. That's more than enough to meet the growing demand for years to come.
+This new protocol uses 128-bit alphanumeric (含有字母和数字的) hexadecimal notation. This means that IPv6 can provide about ~340e+36 IP addresses. That's more than enough to meet the growing demand (需要) for years to come.
 
 _Example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`_
 
@@ -132,7 +132,7 @@ Let's discuss types of IP addresses:
 
 ### Public
 
-A public IP address is an address where one primary address is associated with your whole network. In this type of IP address, each of the connected devices has the same IP address.
+A public IP address is an address where one primary address is associated (有关联的) with your whole network. In this type of IP address, each of the connected devices has the same IP address.
 
 _Example: IP address provided to your router by the ISP._
 
@@ -144,13 +144,13 @@ _Example: IP addresses generated by your home router for your devices._
 
 ### Static
 
-A static IP address does not change and is one that was manually created, as opposed to having been assigned. These addresses are usually more expensive but are more reliable.
+A static IP address does not change and is one that was manually (手工的) created, as opposed to having been assigned. These addresses are usually more expensive but are more reliable (可信赖的｜可依靠的).
 
 _Example: They are usually used for important things like reliable geo-location services, remote access, server hosting, etc._
 
 ### Dynamic
 
-A dynamic IP address changes from time to time and is not always the same. It has been assigned by a [Dynamic Host Configuration Protocol (DHCP)](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) server. Dynamic IP addresses are the most common type of internet protocol address. They are cheaper to deploy and allow us to reuse IP addresses within a network as needed.
+A dynamic IP address changes from time to time and is not always the same. It has been assigned by a [Dynamic Host Configuration Protocol (DHCP)](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) server. Dynamic IP addresses are the most common type of internet protocol address. They are cheaper to deploy and allow us to reuse (重新使用) IP addresses within a network as needed.
 
 _Example: They are more commonly used for consumer equipment and personal use._
 
@@ -179,9 +179,9 @@ The seven abstraction layers of the OSI model can be defined as follows, from to
 
 ### Application
 
-This is the only layer that directly interacts with data from the user. Software applications like web browsers and email clients rely on the application layer to initiate communication. But it should be made clear that client software applications are not part of the application layer, rather the application layer is responsible for the protocols and data manipulation that the software relies on to present meaningful data to the user. Application layer protocols include HTTP as well as SMTP.
+This is the only layer that directly interacts with data from the user. Software applications like web browsers and email clients rely on the application layer to initiate (开始) communication. But it should be made clear that client software applications are not part of the application layer, rather the application layer is responsible for the protocols and data manipulation (操纵) that the software relies on to present meaningful (有意义的) data to the user. Application layer protocols include HTTP as well as SMTP.
 
-### Presentation
+### Presentation （表示）
 
 The presentation layer is also called the Translation layer. The data from the application layer is extracted here and manipulated as per the required format to transmit over the network. The functions of the presentation layer are translation, encryption/decryption, and compression.
 
