@@ -5221,7 +5221,7 @@ To make our system more resilient we can do the following:
 
 # Uber
 
-Let's design an [Uber](https://uber.com) like ride-hailing service, similar to services like [Lyft](https://www.lyft.com), [OLA Cabs](https://www.olacabs.com), etc.
+Let's design an [Uber](https://uber.com) like ride-hailing (打车服务) service, similar to services like [Lyft](https://www.lyft.com), [OLA Cabs](https://www.olacabs.com), etc.
 
 ## What is Uber?
 
@@ -5237,8 +5237,8 @@ We will design our system for two types of users: Customers and Drivers.
 
 **Customers**
 
-- Customers should be able to see all the cabs in the vicinity with an ETA and pricing information.
-- Customers should be able to book a cab to a destination.
+- Customers should be able to see all the cabs (出租车) in the vicinity (附近) with an ETA (预计到达时间) and pricing information.
+- Customers should be able to book a cab to a destination (目的地).
 - Customers should be able to see the location of the driver.
 
 **Drivers**
@@ -5250,8 +5250,8 @@ We will design our system for two types of users: Customers and Drivers.
 ### Non-Functional requirements
 
 - High reliability.
-- High availability with minimal latency.
-- The system should be scalable and efficient.
+- High availability with minimal latency (延迟).
+- The system should be scalable and efficient (有效的).
 
 ### Extended requirements
 
@@ -5259,7 +5259,7 @@ We will design our system for two types of users: Customers and Drivers.
 - Payment processing.
 - Metrics and analytics.
 
-## Estimation and Constraints
+## Estimation （估计｜评估） and Constraints （限制｜约束）
 
 Let's start with the estimation and constraints.
 
@@ -5269,7 +5269,7 @@ _Note: Make sure to check any scale or traffic-related assumptions with your int
 
 Let us assume we have 100 million daily active users (DAU) with 1 million drivers and on average our platform enables 10 million rides daily.
 
-If on average each user performs 10 actions (such as request a check available rides, fares, book rides, etc.) we will have to handle 1 billion requests daily.
+If on average each user performs (执行) 10 actions (such as request a check available rides, fares (票价), book rides, etc.) we will have to handle 1 billion requests daily.
 
 $$
 100 \space million \times 10 \space actions = 1 \space billion/day
@@ -5297,15 +5297,15 @@ $$
 400 \space GB \times 10 \space years \times 365 \space days = \sim 1.4 \space PB
 $$
 
-### Bandwidth
+### Bandwidth (带宽)
 
-As our system is handling 400 GB of ingress every day, we will require a minimum bandwidth of around 4 MB per second.
+As our system is handling 400 GB of ingress (进入) every day, we will require a minimum bandwidth of around 4 MB per second.
 
 $$
 \frac{400 \space GB}{(24 \space hrs \times 3600 \space seconds)} = \sim 5 \space MB/second
 $$
 
-### High-level estimate
+### High-level estimate (估量)
 
 Here is our high-level estimate:
 
@@ -5347,13 +5347,13 @@ As the name suggests, this table stores the `rating` and `feedback` for the trip
 
 **payments**
 
-The payments table contains the payment-related data with the corresponding `tripID`.
+The payments table contains the payment-related data with the corresponding (相应的) `tripID`.
 
 ### What kind of database should we use?
 
-While our data model seems quite relational, we don't necessarily need to store everything in a single database, as this can limit our scalability and quickly become a bottleneck.
+While our data model seems quite relational, we don't necessarily need to store everything in a single database, as this can limit our scalability and quickly become a bottleneck （瓶颈）.
 
-We will split the data between different services each having ownership over a particular table. Then we can use a relational database such as [PostgreSQL](https://www.postgresql.org) or a distributed NoSQL database such as [Apache Cassandra](https://cassandra.apache.org/_/index.html) for our use case.
+We will split the data between different services each having ownership over a particular (特别的) table. Then we can use a relational database such as [PostgreSQL](https://www.postgresql.org) or a distributed NoSQL database such as [Apache Cassandra](https://cassandra.apache.org/_/index.html) for our use case.
 
 ## API design
 
@@ -5377,7 +5377,7 @@ Destination (`Tuple<float>`): Tuple containing the latitude and longitude of the
 
 **Returns**
 
-Result (`Ride`): Associated ride information of the trip.
+Result (`Ride`): Associated (联系) ride information of the trip.
 
 ### Cancel the Ride
 
@@ -5463,7 +5463,7 @@ Now let us do a high-level design of our system.
 
 ### Architecture
 
-We will be using [microservices architecture](https://karanpratapsingh.com/courses/system-design/monoliths-microservices#microservices) since it will make it easier to horizontally scale and decouple our services. Each service will have ownership of its own data model. Let's try to divide our system into some core services.
+We will be using [microservices architecture](https://karanpratapsingh.com/courses/system-design/monoliths-microservices#microservices) since it will make it easier to horizontally scale and decouple (解耦) our services. Each service will have ownership of its own data model. Let's try to divide our system into some core services.
 
 **Customer Service**
 
@@ -5475,7 +5475,7 @@ This service handles driver-related concerns such as authentication and driver i
 
 **Ride Service**
 
-This service will be responsible for ride matching and quadtree aggregation. It will be discussed in detail separately.
+This service will be responsible for ride matching and quadtree (四叉树) aggregation (聚合). It will be discussed in detail separately (分别地).
 
 **Trip Service**
 
@@ -5495,7 +5495,7 @@ This service will be used for metrics and analytics use cases.
 
 **What about inter-service communication and service discovery?**
 
-Since our architecture is microservices-based, services will be communicating with each other as well. Generally, REST or HTTP performs well but we can further improve the performance using [gRPC](https://karanpratapsingh.com/courses/system-design/rest-graphql-grpc#grpc) which is more lightweight and efficient.
+Since our architecture is microservices-based, services will be communicating with each other as well. Generally, REST or HTTP performs well but we can further improve the performance using [gRPC](https://karanpratapsingh.com/courses/system-design/rest-graphql-grpc#grpc) which is more lightweight (轻的) and efficient.
 
 [Service discovery](https://karanpratapsingh.com/courses/system-design/service-discovery) is another thing we will have to take into account. We can also use a service mesh that enables managed, observable, and secure communication between individual services.
 
@@ -5521,13 +5521,13 @@ How do we efficiently send and receive live location data from the client (custo
 
 **Pull model**
 
-The client can periodically send an HTTP request to servers to report its current location and receive ETA and pricing information. This can be achieved via something like [Long polling](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#long-polling).
+The client can periodically (定期) send an HTTP request to servers to report its current location and receive ETA and pricing information. This can be achieved via something like [Long polling](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#long-polling).
 
 **Push model**
 
 The client opens a long-lived connection with the server and once new data is available it will be pushed to the client. We can use [WebSockets](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#websockets) or [Server-Sent Events (SSE)](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#server-sent-events-sse) for this.
 
-The pull model approach is not scalable as it will create unnecessary request overhead on our servers and most of the time the response will be empty, thus wasting our resources. To minimize latency, using the push model with [WebSockets](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#websockets) is a better choice because then we can push data to the client once it's available without any delay, given the connection is open with the client. Also, WebSockets provide full-duplex communication, unlike [Server-Sent Events (SSE)](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#server-sent-events-sse) which are only unidirectional.
+The pull model approach is not scalable as it will create unnecessary request overhead on our servers and most of the time the response will be empty, thus wasting our resources. To minimize latency, using the push model with [WebSockets](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#websockets) is a better choice because then we can push data to the client once it's available without any delay, given the connection is open with the client. Also, WebSockets provide full-duplex communication, unlike [Server-Sent Events (SSE)](https://karanpratapsingh.com/courses/system-design/long-polling-websockets-server-sent-events#server-sent-events-sse) which are only unidirectional (单向).
 
 Additionally, the client application should have some sort of background job mechanism to ping GPS location while the application is in the background.
 
@@ -5535,7 +5535,7 @@ _Note: Learn more about [Long polling, WebSockets, Server-Sent Events (SSE)](htt
 
 ### Ride Matching
 
-We need a way to efficiently store and query nearby drivers. Let's explore different solutions we can incorporate into our design.
+We need a way to efficiently store and query nearby drivers. Let's explore different solutions we can incorporate (包含) into our design.
 
 **SQL**
 
@@ -5545,19 +5545,19 @@ We already have access to the latitude and longitude of our customers, and with 
 SELECT * FROM locations WHERE lat BETWEEN X-R AND X+R AND long BETWEEN Y-R AND Y+R
 ```
 
-However, this is not scalable, and performing this query on large datasets will be quite slow.
+However, this is not scalable, and performing this query on large datasets will be quite (相当) slow.
 
 **Geohashing**
 
 [Geohashing](/courses/sytem-design/geohashing-and-quadtrees#geohashing) is a [geocoding](https://en.wikipedia.org/wiki/Address_geocoding) method used to encode geographic coordinates such as latitude and longitude into short alphanumeric strings. It was created by [Gustavo Niemeyer](https://twitter.com/gniemeyer) in 2008.
 
-Geohash is a hierarchical spatial index that uses Base-32 alphabet encoding, the first character in a geohash identifies the initial location as one of the 32 cells. This cell will also contain 32 cells. This means that to represent a point, the world is recursively divided into smaller and smaller cells with each additional bit until the desired precision is attained. The precision factor also determines the size of the cell.
+Geohash is a hierarchical spatial (空间的) index that uses Base-32 alphabet encoding, the first character in a geohash identifies the initial location as one of the 32 cells. This cell will also contain 32 cells. This means that to represent a point, the world is recursively divided into smaller and smaller cells with each additional bit until the desired precision is attained. The precision factor also determines the size of the cell.
 
 ![geohashing](https://raw.githubusercontent.com/karanpratapsingh/portfolio/master/public/static/courses/system-design/chapter-IV/geohashing-and-quadtrees/geohashing.png)
 
 For example, San Francisco with coordinates `37.7564, -122.4016` can be represented in geohash as `9q8yy9mf`.
 
-Now, using the customer's geohash we can determine the nearest available driver by simply comparing it with the driver's geohash. For better performance, we will index and store the geohash of the driver in memory for faster retrieval.
+Now, using the customer's geohash we can determine the nearest available driver by simply comparing it with the driver's geohash. For better performance, we will index and store the geohash (地理散列) of the driver in memory for faster retrieval (检索).
 
 **Quadtrees**
 
@@ -5611,11 +5611,11 @@ _For more details, refer to [Sharding](https://karanpratapsingh.com/courses/syst
 
 ### Metrics and Analytics
 
-Recording analytics and metrics is one of our extended requirements. We can capture the data from different services and run analytics on the data using [Apache Spark](https://spark.apache.org) which is an open-source unified analytics engine for large-scale data processing. Additionally, we can store critical metadata in the views table to increase data points within our data.
+Recording analytics and metrics is one of our extended requirements. We can capture the data from different services and run analytics on the data using [Apache Spark](https://spark.apache.org) which is an open-source unified (统一) analytics engine for large-scale data processing. Additionally, we can store critical metadata in the views table to increase data points within our data.
 
 ### Caching
 
-In a location services-based platform, caching is important. We have to be able to cache the recent locations of the customers and drivers for fast retrieval. We can use solutions like [Redis](https://redis.io) or [Memcached](https://memcached.org) but what kind of cache eviction policy would best fit our needs?
+In a location services-based platform, caching is important. We have to be able to cache the recent locations of the customers and drivers for fast retrieval. We can use solutions like [Redis](https://redis.io) or [Memcached](https://memcached.org) but what kind of cache eviction (驱逐) policy would best fit our needs?
 
 **Which cache eviction policy to use?**
 
@@ -5637,15 +5637,15 @@ Let us identify and resolve bottlenecks such as single points of failure in our 
 - "How will we distribute our traffic between our components?"
 - "How can we reduce the load on our database?"
 - "How to improve the availability of our cache?"
-- "How can we make our notification system more robust?"
+- "How can we make our notification system more robust (健壮) ?"
 
-To make our system more resilient we can do the following:
+To make our system more resilient (有弹性的) we can do the following:
 
 - Running multiple instances of each of our services.
 - Introducing [load balancers](https://karanpratapsingh.com/courses/system-design/load-balancing) between clients, servers, databases, and cache servers.
 - Using multiple read replicas for our databases.
 - Multiple instances and replicas for our distributed cache.
-- Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated [message broker](https://karanpratapsingh.com/courses/system-design/message-brokers) such as [Apache Kafka](https://kafka.apache.org) or [NATS](https://nats.io) to make our notification system more robust.
+- Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated (投入的) [message broker](https://karanpratapsingh.com/courses/system-design/message-brokers) such as [Apache Kafka](https://kafka.apache.org) or [NATS](https://nats.io) to make our notification system more robust.
 
 # Next Steps
 
